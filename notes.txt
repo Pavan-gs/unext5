@@ -1,0 +1,141 @@
+OLTP --> Database --> RDBMS --> Oracle, SQL server, post gres, IBM db2, maria db --> CRUD operations --> ACID principles --> Normalization
+OLAP --> Data warehouse
+
+Big Data
+========
+1990's --> dot com, personal computers
+
+Challenges
+==========
+Volume --> License, High end costly servers
+Velocity --> Speed of data generation
+Veracity --> Unstructured data 
+
+Data Science lifecycle 
+======================
+Data engineering --> collect, storage, processing & managing data [RDBMS/DW, Big data[Hadoop,Spark], Cloud)
+
+Data analysis --> maths, stats, domain expertise [Pandas, R, SQL, Pyspark]
+
+BI/visualisation --> Reports, Dashboards [Power BI, Tableau, Cognos]
+
+Advanced analytics --> ML, DL
+
+Solution development
+
+Hadoop
+======
+Opensource framework to store and process Big data --> Java --> Doug cutting --> 2005 --> Apache
+
+Hadoop cluster --> Master slave architecture --> A group of servers connected together where hadoop software is running set up using
+commodity hardware
+
+Vendors --> Apache (HDFS,MR/YARN), Cloudera/Hortonworks, MapR, MS HD insight, IBM big insight
+
+Modes of installation --> Standalone, Pseudo-distributed, Fully-distributed
+
+Core components
+===============
+
+HDFS --> Hadoop Distributed File System --> Storage layer
+
+Map-Reduce/YARN --> Processing layer
+
+HDFS
+====
+Master-slave architecture
+
+Daemons
+=======
+Master --> Name node ---> is responsible to store metadata about datanodes, blocks and replications
+Slave -->  Data nodes --> are responsible to store the actual data
+
+blocks --> Maximum size of a block is 128 mb, stored/distributed into data nodes in parallel, replicated blocks are stored in serial
+
+fs --> Client library --> Interface between user and hadoop
+
+Fault tolerance --> Each blocks exists 3 times by default --> Replication factor --> 3
+
+Rack awareness --> Replications are put in different nodes/rack/clusters/ data centers
+
+Secondary name node --> Manual back-up of the name node --> Single point of failure
+
+High availability --> Dynamic back-up of name node
+
+Federation --> Set up multiple name nodes to manage seperate namespaces
+
+hadoop fs -put e://unext/cust.csv  /hdfs_folder
+
+Basic linux commands
+====================
+ls --> list the file system'
+jps --> java process status --> tool to list jvm's
+pwd --> present working directory
+mkdir --> To create a new folder
+cd --> change directory
+editors -->  vi, vim, gedit
+cat
+
+hadoop fs -ls /   --> To list the filesystem in hdfs
+hadoop fs -mkdir /newdir --> To create a 
+hadoop fs -put /source_path(local_machine)  /destination_path(hdfs)
+hadoop fs -get /source_path(hdfs)  /destination_path(local_machine)
+
+Mapreduce/YARN 
+==============
+Parallel Processing framework of Hadoop --> Distributed parallel algorithm
+
+Master-slave architecture
+
+Master --> Resource Manager --> Name node --> Allocate resources required to run the job
+Slave --> Node managers --> Data nodes --> To process the requests
+Application master --> Short term process to help facilitate the resources to node manager from resource manager
+
+Mapper program --> Overrides the map class --> business logic
+Reducer program --> Overrides the reduce class --> aggregation logic
+
+input format 
+
+Running python program as mapreduce framework
+============================================
+Hadoop streaming --> Utility that comes along with hadoop installation, 
+helps to run a executable scripts of python or R programming in JVM/java's MR framework
+Pydoop, hadoopy, mrjob etc.
+
+
+#! --> Path of the interpreter to run the program
+Write your mapper and reducer logic
+give read/write perminssion to mapper and reducer scripts --> chmod a+x mapper.py reducer.py
+/usr/local/hadoop-2.9.1/share/hadoop/tools/lib/hadoop-streaming-2.9.1.jar --> The path of hadoop streaming
+
+cat myfile.txt|python mapper.py
+cat myfile.txt|python mapper.py|sort -k1,1|python reducer.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
